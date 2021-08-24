@@ -7,6 +7,12 @@ Swagger-UI end points
 	
 	http://localhost:8123/v2/api-docs
 
-REST-controller end points
 
-	
+Application root with HATEOAS info
+
+	http://localhost:8123/
+
+
+HAL Browser
+
+	http://localhost:8123/browser/index.html

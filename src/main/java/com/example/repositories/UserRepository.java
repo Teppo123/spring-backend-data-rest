@@ -32,6 +32,8 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
 	Optional<User> findByIdAndDeactivatedFalse(@Param(PARAM_ID) long id);
 
+	
+	// PATCH ei null päivitetään
 	@RestResource(exported = false)
 	@Modifying
 	@Query("UPDATE users u SET u.deactivated = true WHERE u.id = :" + PARAM_ID)
