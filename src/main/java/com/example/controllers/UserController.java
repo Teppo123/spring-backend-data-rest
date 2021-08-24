@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.repositories.UserRepository;
 
 @Controller
-@RequestMapping("/special-user-actions")
+@RequestMapping(UserController.PATH_ROOT)
 public class UserController {
+
+	public static final String PATH_ROOT = "/users";
+
+	protected static final String PATH_DEACTIVATE_USER_BY_ID_PATH = "/deactivate/{" + UserRepository.PARAM_ID
+			+ "}";
 
 	@Autowired
 	private UserRepository userRepository;
 
-	@PutMapping("/deactivateUserById/{" + UserRepository.PARAM_ID + "}")
+	@PutMapping(UserController.PATH_DEACTIVATE_USER_BY_ID_PATH)
 	@Transactional
 	public ResponseEntity<Integer> deactivateUserById(@PathVariable(name = UserRepository.PARAM_ID) long id) {
 		return ResponseEntity.ok(this.userRepository.deactivateUserById(id));
