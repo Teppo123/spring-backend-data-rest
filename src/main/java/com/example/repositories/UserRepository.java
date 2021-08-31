@@ -13,17 +13,17 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
 	public static final String PARAM_ID = "id";
 	public static final String PARAM_DATE = "date";
-	public static final String PRAM_LAST_NAME = "lastName";
+	public static final String PARAM_LAST_NAME = "lastName";
 	public static final String PARAM_FIRST_NAME = "firstName";
 
 	List<User> findAllByDeactivatedFalse();
 
 	Optional<User> findByFirstNameAndLastNameAndDeactivatedFalse(@Param(PARAM_FIRST_NAME) String firstName,
-			@Param(PRAM_LAST_NAME) String lastName);
+			@Param(PARAM_LAST_NAME) String lastName);
 
 	List<User> findByFirstNameAndDeactivatedFalse(@Param(PARAM_FIRST_NAME) String firstName);
 
-	List<User> findByLastNameAndDeactivatedFalse(@Param(PRAM_LAST_NAME) String lastName);
+	List<User> findByLastNameAndDeactivatedFalse(@Param(PARAM_LAST_NAME) String lastName);
 
 	List<User> findByBirthDateBeforeAndDeactivatedFalse(@Param(PARAM_DATE) Date date);
 
