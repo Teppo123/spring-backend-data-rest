@@ -11,7 +11,6 @@ import com.example.repositories.entities.User;
 
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
-	public static final String PARAM_ID = "id";
 	public static final String PARAM_DATE = "date";
 	public static final String PARAM_LAST_NAME = "lastName";
 	public static final String PARAM_FIRST_NAME = "firstName";
@@ -26,7 +25,5 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 	List<User> findByLastNameAndDeactivatedFalse(@Param(PARAM_LAST_NAME) String lastName);
 
 	List<User> findByBirthDateBeforeAndDeactivatedFalse(@Param(PARAM_DATE) Date date);
-
-	Optional<User> findByIdAndDeactivatedFalse(@Param(PARAM_ID) long id);
 
 }
