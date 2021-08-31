@@ -4,11 +4,8 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.example.repositories.entities.User;
 
@@ -31,12 +28,5 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 	List<User> findByBirthDateBeforeAndDeactivatedFalse(@Param(PARAM_DATE) Date date);
 
 	Optional<User> findByIdAndDeactivatedFalse(@Param(PARAM_ID) long id);
-
-	
-	// PATCH ei null päivitetään
-	@RestResource(exported = false)
-	@Modifying
-	@Query("UPDATE users u SET u.deactivated = true WHERE u.id = :" + PARAM_ID)
-	int deactivateUserById(@Param(PARAM_ID) long id);
 
 }
